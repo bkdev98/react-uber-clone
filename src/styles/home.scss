@@ -1,0 +1,128 @@
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  height: 100%;
+  position: relative;
+}
+
+.map {
+  background: #ACC9DD;
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__offline {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    background: #000;
+    z-index: 1;
+  }
+}
+
+.marker {
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #40A0C8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-5px, -5px);
+  .ring {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    padding: 20px;
+    transform: scale(.25);
+    transform-origin: center;
+    border: 2px solid #40A0C8;
+    animation-name: ping;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    box-shadow: 0px 0px 3px #ccc;
+  }
+
+  &--dark {
+    background: #000;
+    width: 14px;
+    height: 14px;
+    transform: translate(-7px, -7px);
+    z-index: 1;
+    &:after {
+      content: '';
+      background: #fff;
+      width: 4px;
+      height: 4px;
+      z-index: 1;
+      border-radius: 50%;
+    }
+  }
+
+  &--destination {
+    border-radius: 0;
+  }
+}
+
+.path {
+  animation-name: dash;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  opacity: 1;
+}
+
+.path2 {
+  animation-name: dash2;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+
+@keyframes dash {
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: initial;
+  }
+}
+
+@keyframes dash2 {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes ping {
+  from {
+    transform: scale(.25);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

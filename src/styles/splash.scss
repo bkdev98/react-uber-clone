@@ -1,0 +1,74 @@
+.splashScreen {
+  color: #fff;
+  height: 100%;
+  position: absolute;
+  background: #171717;
+  z-index: 1;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  transform: translateZ(0);
+  pointer-events: none;
+  overflow: hidden;
+
+  &__disappear {
+    opacity: 0;
+  }
+
+  &__logo {
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    transition: 0.8s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+
+    &__disappear {
+      transform: translate(-50%, -50%) scale(8);
+    }
+  }
+
+  &__logoInner {
+    content: '';
+    background: #171717;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 1;
+    transition: 0.5s;
+
+    &__disappear {
+      transform: scale(0);
+      border-radius: 12px;
+      background: #40A0C8;
+      opacity: 0;
+    }
+  }
+  &__logoConnector {
+    content: '';
+    background: #171717;
+    width: 50px;
+    height: 8px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateX(-26px) scaleY(1);
+    transition: 0.05s;
+    opacity: 1;
+    &__disappear {
+      transform: translateX(-26px) scaleY(0);
+      opacity: 0;
+    }
+  }
+}

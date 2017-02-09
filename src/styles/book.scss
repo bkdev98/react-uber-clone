@@ -1,0 +1,161 @@
+.book {
+  background: #fff;
+  position: absolute;
+  height: 334px;
+  width: 100%;
+  bottom: 0;
+  box-shadow: 0px -1px 10px #ccc;
+  font-weight: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  z-index: 1;
+
+  &__header {
+    text-align: center;
+    height: 50px;
+    position: relative;
+
+    &__name {
+      width: 250px;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      transition: 0.3s;
+      color: #939393;
+      font-size: 12px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0 20px;
+
+    .rideOptions {
+      position: relative;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .rideGroup {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: space-around;
+      flex-grow: 1;
+      position: absolute;
+      transition: 0.3s;
+    }
+    
+    .paymentOptions {
+      border-top: 1px solid #e6e6e6;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+
+      > div {
+        &:last-child {
+          color: #959595;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    height: 70px;
+    padding: 0 20px 20px;
+  }
+
+
+  @for $i from 0 through 1 {
+    &[data-rideid="#{$i}"] {
+      @for $j from 0 through 1 {
+        .book__header__name[data-id="#{$j}"] {
+          $left: #{50 * ($j - $i + 1)};
+          $left-per:  #{$left + "%"};
+          left: $left-per;
+          @if $i == $j {
+            color: #000;
+            font-size: 16px;
+          }
+        }
+
+        .rideGroup[data-id="#{$j}"] {
+          $left: #{100 * ($j - $i)};
+          $left-per:  #{$left + "%"};
+          left: $left-per;
+        }
+
+      }
+
+    }
+
+  }
+
+
+}
+
+.requestBtn {
+  background: #000;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.ride {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+
+  &--active {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    background: #ccc;
+    border-radius: 50%;
+    background-size: cover;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  &__price {
+    color: #959595;
+    margin: 0;
+    margin-top: 6px;
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
